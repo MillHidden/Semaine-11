@@ -1,0 +1,112 @@
+  <!DOCTYPE html>
+<html>
+
+  <head>
+
+    <meta charset="utf-8"> 
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Chifoumi</title>
+
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+     <link href="assets/css/stylesheet.css" rel="stylesheet">
+     
+  </head>
+
+  <body>
+
+    <header>
+    </header>
+    
+    <main>
+      <div id="jeu__selection" class="container">
+        <div class="row">
+          <div class="col-xs-12">
+            <div class="radio">
+              <label>
+                <input type="radio" name="jeu__selection-radio" id="jeu0" value="option1" checked>
+                Le classique : Pierre/Feuille/Ciseaux 
+              </label>
+            </div>
+            <div class="radio">
+              <label>
+                <input type="radio" name="jeu__selection-radio" id="jeu1" value="option2">
+                La forme plus évoluée : Pierre/Feuille/Ciseaux/Lezard/Spock
+              </label>
+            </div>
+            <button id="jeu__selection-button" class="btn btn-default" type="submit">Jouer !</button>
+          </div>
+        </div>
+      </div>
+        
+      <div id="jeu__visuel" class="container-fluid hidden">
+        <div class="row container__choix-style">
+          <div id="choix_util" class="choix_util text-center"></div>
+        </div>
+          
+        <div id="action" class="row">
+          <div class="col-xs-12 text-center">
+            <button id="lancer" type="button" class="btn btn-primary">Let's fight !</button>
+            <button id="reload" type="button" class="btn btn-danger">Choisir un autre jeu/recommencer une partie</button>
+          </div>
+        </div>
+          
+        <div id="fight__content" class="row">
+          <div id="result" class="container-fluid">
+            <div class="row">
+              <div class="col-xs-12">
+                <div id = "fight__img" class="row hidden">
+                  <div class="col-xs-4 text-right"><img id="fight__joueur" src="" class="img-style" alt=""></div>
+                  <div class="col-xs-4 text-center"><img src="assets/img/vs.png" class="img-style" alt=""> </div>
+                  <div class="col-xs-4 text-left"><img id="fight__ordi" src="" class="img-style" alt=""></div>
+                </div>
+              <div id="fight__nom" class="col-xs-12 hidden">  
+                <div class="row">
+                  <div class="col-xs-4 text-right">Vous</div>
+                  <div class="col-xs-4"></div>
+                  <div class="col-xs-4 text-left">Ordinateur</div>
+                </div>
+              </div>
+              <div id="fight__vainqueur" class="col-xs-12 text-center hidden">
+                Vainqueur : <span id="gagnant"></span>  
+              </div>
+              <div id="fight__result" class="col-xs-12">
+                <div class="row">
+                  <div class="col-xs-6 text-right">
+                    Victoires : <span id="nbgagnes">0</span> // Défaites : <span id="nbdefaites">0</span> // Egalités : <span id="nbegalites">0</span>  
+                  </div>
+                  <div class="col-xs-6 text-left">
+                    Win rate : <span id="winrate"></span> %<br>  
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      
+      </div>
+      
+    </main>
+    
+    <footer>
+    </footer>
+
+    <!-- jQuery -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+    <!-- Javascript de Bootstrap -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+
+    <script src="assets/js/codejeu0.js"></script>
+    <script src="assets/js/script.js"></script>
+
+  </body>
+
+</html>

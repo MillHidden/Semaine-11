@@ -1,0 +1,53 @@
+.bordure {
+    border: 1px solid blue;
+}
+
+.active {
+    border: 3px solid red;
+}
+
+.img-style { 
+    width: 140px;
+    height: 140px;
+}
+
+.choix_util  {
+    min-height : 640px;
+    min-width: 500px;
+}
+    .choix__img-style {
+        position : absolute;
+    }
+    
+    .img-devant {
+        z-index: 2;
+    }
+        
+    .img-derriere {
+        z-index: 1;
+    }
+    
+    .animation1 {
+        transition: top 3s, left 5s;
+    }
+    
+    .animation2 {
+        transition: top 1s, left 1s;
+    }
+
+#action {
+    height : 120px;
+    line-height: 120px;
+}
+    
+    #fight p {
+        text-align: center;
+    }
+    
+        #fight #fight__joueur {
+            float: right;
+        }
+        
+        #fight #fight__ordi {
+            float: left;
+        }
