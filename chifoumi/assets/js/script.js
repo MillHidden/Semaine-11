@@ -6,6 +6,8 @@ var jeu_visuel = document.getElementById("jeu__visuel"); // div contenant le vis
 
 var choix = []; //tableau regroupant les élements choisis pour le jeu
 var jeu = -1; //choix du jeu
+var bazinga = 0; //Bazinga
+var bazinga_sound = ["assets/sounds/The_Bazinga_Song_By_Sheldon_Cooper.mp3", "assets/sounds/Sheldon_Cooper_Bazinga_Song.mp3"]; //src des sons
 
 action_jouer.addEventListener ("click", nouvellePartie); //on écoute le bouton du choix du jeu
 
@@ -21,14 +23,30 @@ function nouvellePartie () {
             jeu = i;
         }
     }
-    /* on insére le code différent selon le jeu*/
+    /* Sheldon's effect*/
+    bazinga = bazinga / 10 + Math.random();
+    if ((bazinga > 0.75) && (jeu === 0)) {
+        jeu = 1;
+        bazinga = 0;
+        sound = document.createElement("audio");
+        sound_source = document.createElement("source");
+        src = Math.floor(Math.random()*2);
+        sound_source.setAttribute("src", bazinga_sound[src]);
+        sound_source.setAttribute("type", "audio/mp3");
+        sound.setAttribute("controls", "controls");
+        sound.setAttribute("autoplay", "true");
+        sound.setAttribute("class", "hidden");
+        sound.appendChild(sound_source);
+        footer = document.getElementById("footer");
+        footer.appendChild(sound);
+        }
+    /* on insère le code différent selon le jeu*/
     insererCode();
     /* on récupère les éléments du jeu*/ 
     lancer = document.getElementById("lancer");
     reload = document.getElementById("reload");
     fight_content = document.getElementById('fight__content');
     fight_img = document.getElementById('fight__img');
-    fight_nom = document.getElementById('fight__nom');
     fight_vainqueur = document.getElementById('fight__vainqueur');
     fight_result = document.getElementById('fight__result');
     imgjoueur = document.getElementById('fight__joueur');
@@ -47,6 +65,13 @@ function nouvellePartie () {
     /* on regarde si on clic sur une des images */
     for (var i = 0 ; i< choix.length; i++) {
         choix[i].addEventListener("click", ecouteImage); 
+    }
+    /* on cache le combat*/
+    if (!fight_img.classList.contains("hidden")) {
+        fight_img.classList.add("hidden");
+    }
+    if (!fight_nom.classList.contains("hidden")) {
+        fight_nom.classList.add("hidden"); 
     }
     /* on supprime l'écoute sur le bouton de lancement de jeu */
     action_jouer.removeEventListener('click', nouvellePartie); 
@@ -109,9 +134,6 @@ function fighting () {
         if (fight_img.classList.contains("hidden")) {
             fight_img.classList.remove("hidden");
         }
-        if (fight_nom.classList.contains("hidden")) {
-            fight_nom.classList.remove("hidden"); 
-        }
         if (fight_vainqueur.classList.contains("hidden")) {
             fight_vainqueur.classList.remove("hidden");
         }
@@ -127,7 +149,7 @@ function fighting () {
         else {
             trouverGagnant (choix_joueur, ordi);
             /* on affiche le winrate*/
-            winrate.innerHTML = 100 * parseFloat(nbgagnes.innerHTML) /(parseFloat(nbgagnes.innerHTML) + parseFloat(nbdefaites.innerHTML));
+            winrate.innerHTML = (100 * parseFloat(nbgagnes.innerHTML) /(parseFloat(nbgagnes.innerHTML) + parseFloat(nbdefaites.innerHTML))).toFixed(2);
         }
     }
     une_fois = true;
@@ -143,6 +165,9 @@ function reloading () {
     selection.classList.remove("active");
     /* on cache on cache le visuel du jeu et on affiche la sélection des jeux*/
     jeu_visuel.classList.add("hidden");
+    if (!fight_vainqueur.classList.contains("hidden")) {
+        fight_vainqueur.classList.add("hidden");
+    }
     jeu_selection.classList.remove("hidden");
     /*On ferme l'écoute du bouton de combat*/
     lancer.removeEventListener("clic", fighting); 
@@ -156,7 +181,10 @@ function reloading () {
     /* on efface le contenu des images de choix*/
     choix = [];
     /* on active l'écoute du bouton de choix du jeu*/
-    action_jouer.addEventListener ("click", nouvellePartie); 
+    action_jouer.addEventListener ("click", nouvellePartie);
+    if (bazinga === 0) {
+        footer.removeChild(sound);
+    } 
 }
 
 function choixOrdi () {
@@ -207,12 +235,12 @@ function trouverGagnant (joueur, ordi) { //le choix du gagnant varie selon le je
 
 function afficherGagnant (vainqueur) {
     /* si l'ordinateur gagne, on affiche l'ordinateur comme gagnant et le nombre de défaites augmente de 1 */
-    if (vainqueur == 0) {
+    if (vainqueur === 0) {
         gagnant.innerHTML = "ORDINATEUR";
         nbdefaites.innerHTML++;
     }
     /* si le joueur gagne, on affiche le joueur comme gagnant et le nombre de victoires augmente de 1 */
-    else if (vainqueur == 1) {
+    else if (vainqueur === 1) {
         gagnant.innerHTML = "VOUS";
         nbgagnes.innerHTML++;    
     }

@@ -18,17 +18,17 @@ function insererCode() {
     
     if (jeu === 0) {
         /* On définit les positions finales des trois images autour de l'image centrale */
-        dispo[1] = {top : "500px", left: choix[0].offsetLeft + "px"};
-        dispo[2] = {top : (choix[0].offsetTop - 125) + "px", left : (choix[0].offsetLeft + 216) + "px"};
-        dispo[3] = {top : (choix[0].offsetTop - 125) + "px", left : (choix[0].offsetLeft - 216) + "px"};
+        dispo[1] = {top : "0px", left: choix[0].offsetLeft + "px"};
+        dispo[2] = {top : (choix[0].offsetTop + 125) + "px", left : (choix[0].offsetLeft - 216) + "px"};
+        dispo[3] = {top : (choix[0].offsetTop + 125) + "px", left : (choix[0].offsetLeft + 216) + "px"};
     }
     if (jeu === 1) { 
         /* On place les cinq images autour de l'image centrale */
-        dispo [1] = {top : "0px", left: choix[0].style.left};
-        dispo [2] = {top : (choix[0].offsetTop - 77) + "px", left : (choix[0].offsetLeft + 238) + "px"}
-        dispo [3] = {top : (choix[0].offsetTop + 202) + "px", left: (choix[0].offsetLeft + 147) + "px"};
-        dispo [4] = {top : (choix[0].offsetTop + 202) + "px", left: (choix[0].offsetLeft - 147) + "px"};
-        dispo [5] = {top : (choix[0].offsetTop - 77) + "px", left: (choix[0].offsetLeft - 238) + "px"};
+        dispo [1] = {top : (choix[0].offsetTop + 202) + "px", left: (choix[0].offsetLeft - 147) + "px"};
+        dispo [2] = {top : (choix[0].offsetTop + 202) + "px", left: (choix[0].offsetLeft + 147) + "px"}
+        dispo [3] = {top : (choix[0].offsetTop - 77) + "px", left : (choix[0].offsetLeft + 238) + "px"};
+        dispo [4] = {top : (choix[0].offsetTop - 77) + "px", left: (choix[0].offsetLeft - 238) + "px"};
+        dispo [5] = {top : "0px", left: choix[0].style.left};
     }
     /* on reset le placement des images sans animations*/
     resetDispo ();
@@ -48,33 +48,38 @@ function creerImage (num) {
             /* si l'on a créé l'image de choix, elle n'est pas circulaire et elle est devant*/
             choix[0].setAttribute("class", "img-devant img-style choix__img-style");
             choix[0].setAttribute("id", "choix__general");
-            choix[0].setAttribute("src", "assets/img/choix.png");
+            if (!bazinga) {
+                 choix[0].setAttribute("src", "assets/img/bazinga.png");
+            }
+             else {
+                choix[0].setAttribute("src", "assets/img/choix" + jeu + ".png");
+             }
             choix[0].setAttribute("alt", "Choix général");
-            choix[0].setAttribute("style", "top: 250px; left: 50%;");
+            choix[0].setAttribute("style", "top: 260px; left: 50%; background: white;");
             break;
         case 1:
             choix[1].setAttribute("id", "choix__pierre");
-            choix[1].setAttribute("src","assets/img/pierre.png");
+            choix[1].setAttribute("src","assets/img/Rock.png");
             choix[1].setAttribute("alt", "Pierre");
             break;
         case 2:
             choix[2].setAttribute("id", "choix__feuille");
-            choix[2].setAttribute("src", "assets/img/feuille.png");
+            choix[2].setAttribute("src", "assets/img/Paper.png");
             choix[2].setAttribute("alt", "Feuille");
             break;
         case 3:
             choix[3].setAttribute("id", "choix__ciseaux");
-            choix[3].setAttribute("src","assets/img/ciseaux.png");
+            choix[3].setAttribute("src","assets/img/Cisors.png");
             choix[3].setAttribute("alt", "Ciseaux");
             break;
         case 4:
             choix[4].setAttribute("id", "choix__lezard");
-            choix[4].setAttribute("src","assets/img/lezard.png");
+            choix[4].setAttribute("src","assets/img/Lizard.png");
             choix[4].setAttribute("alt", "Lezard");
             break;
         case 5:
             choix[5].setAttribute("id", "choix__spock");
-            choix[5].setAttribute("src", "assets/img/spock.png");
+            choix[5].setAttribute("src", "assets/img/Spock.png");
             choix[5].setAttribute("alt", "Spock");
             break;
     }

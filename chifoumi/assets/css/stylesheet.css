@@ -1,5 +1,5 @@
 .bordure {
-    border: 1px solid blue;
+    border: 3px solid green;
 }
 
 .active {
@@ -11,8 +11,47 @@
     height: 140px;
 }
 
+#jeu__selection {
+    padding-top: 40px;
+    background-color : black;
+    color: white;
+}
+    
+    input {
+        display: none;
+    }
+
+    input:checked ~ div span{
+        border: 2px solid blue;
+    }
+    
+    input:checked ~ .jeu__selection_exp{
+        visibility: visible;
+    }
+    
+    .jeu__selection_exp {
+        visibility: hidden;
+        display: block;
+    }
+    
+    
+    #jeu__selection-button {
+        margin: 15px;
+    }
+    
+    .jeu__selection_video_1 {
+        width : 100%;
+        height : 800px;
+        display: none;
+    }
+
+    #jeu__selection__video_param {        
+        valuetype : "https://www.youtube.com/v/llq528pnv9c";
+    }
+    
+   
 .choix_util  {
-    min-height : 640px;
+    min-height : 600px;
     min-width: 500px;
 }
     .choix__img-style {
@@ -51,3 +90,13 @@
         #fight #fight__ordi {
             float: left;
         }
+        
+        
+        
+footer {
+    text-align: right;
+    margin-right: 60px
+}
+    .twitter {
+        height: 50px;
+    }
